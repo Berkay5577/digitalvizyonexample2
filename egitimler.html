@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eğitim Kataloğu | Digital Vizyon Akademi</title>
+<meta name="description" content="Digital Vizyon Akademi eğitim kataloğu: IT, kurumsal gelişim ve kalite eğitimleri. Azure, Docker, Kubernetes, DevOps, ISO 9001 ve daha fazlası.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="egitimler">
+
+<div class="cursor" id="cursor"></div>
+
+<header id="header"></header>
+
+<section class="page-hero">
+  <div class="wrap ph-in">
+    <div class="crumb"><a href="index.html">Anasayfa</a><span>›</span>Eğitimler</div>
+    <h1>Eğitim Kataloğu</h1>
+    <p>Bilgi teknolojileri, kurumsal gelişim ve kalite alanlarında; kurumunuzun ihtiyacına göre online veya yüz yüze sunulan eğitim programlarımız.</p>
+  </div>
+</section>
+
+<section class="cats" style="padding:64px 0 110px">
+  <div class="wrap">
+    <form class="search reveal" id="catalogForm" style="max-width:640px;margin:0 auto 30px;box-shadow:0 16px 40px rgba(74,36,100,.12)" onsubmit="return false">
+      <input type="text" id="catalogSearch" placeholder="Eğitim ara… (Azure, Kubernetes, ISO, liderlik…)">
+      <button type="submit" aria-label="Ara"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
+    </form>
+    <div class="cat-filter reveal" id="trainingFilter">
+      <button class="chip active" data-f="all">Tümü</button>
+      <button class="chip" data-f="it">IT Eğitimleri</button>
+      <button class="chip" data-f="kurumsal">Kurumsal Gelişim</button>
+      <button class="chip" data-f="kalite">Kalite &amp; Standartlar</button>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:34px"><strong id="resultCount">0</strong> eğitim listeleniyor</p>
+    <div class="tgrid" id="trainingGrid"></div>
+    <div class="no-result" id="noResult">Aramanızla eşleşen eğitim bulunamadı. Farklı bir anahtar kelime deneyin.</div>
+  </div>
+</section>
+
+<div class="cta-wrap" style="padding:0 0 100px"><div class="wrap"><div class="cta-band reveal"><div class="in">
+  <h2>Aradığınız Eğitimi Bulamadınız mı?</h2>
+  <p>Kuruma özel içerik ve programlar geliştiriyoruz. İhtiyacınızı bize iletin, size özel çözüm sunalım.</p>
+  <div class="btns"><a href="iletisim.html" class="btn btn-gold">Kuruma Özel Talep</a><a href="tel:+903122174303" class="btn btn-ghost">+90 312 217 43 03</a></div>
+</div></div></div></div>
+
+<footer id="siteFooter"></footer>
+
+<button class="totop" id="totop" aria-label="Yukarı"><svg viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg></button>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

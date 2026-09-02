@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurumsal Kimlik | Digital Vizyon Akademi</title>
+<meta name="description" content="Digital Vizyon Akademi kurumsal kimliği: logo, marka renkleri, tipografi ve eğitim katalogları.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .kimlik{padding:80px 0}
+  .kimlik .block{margin-bottom:60px}
+  .logo-show{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .logo-box{border:1px solid var(--line);border-radius:18px;min-height:170px;display:grid;place-items:center;padding:30px}
+  .logo-box.dark{background:#1a0f2e;border-color:transparent}
+  .logo-box img{height:60px}
+  .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .sw{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .sw .c{height:110px}
+  .sw .t{padding:14px 16px}
+  .sw .t b{display:block;font-size:14px}
+  .sw .t span{font-size:12.5px;color:var(--muted)}
+  .type-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .type-card{border:1px solid var(--line);border-radius:18px;padding:30px}
+  .type-card .big{font-size:44px;line-height:1;margin-bottom:14px}
+  .cat-dl{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .dl-card{display:flex;gap:18px;align-items:center;border:1px solid var(--line);border-radius:18px;padding:24px;transition:.3s}
+  .dl-card:hover{box-shadow:0 20px 44px rgba(74,36,100,.1);transform:translateY(-3px);border-color:transparent}
+  .dl-card .ic{width:54px;height:54px;border-radius:14px;flex:none;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--purple),var(--magenta))}
+  .dl-card .ic svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7}
+  .dl-card h3{font-size:16px;margin-bottom:4px}
+  .dl-card p{font-size:13px;color:var(--muted)}
+  @media(max-width:680px){.logo-show,.swatches,.type-grid,.cat-dl{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="kimlik">
+
+<div class="cursor" id="cursor"></div>
+<header id="header"></header>
+
+<section class="page-hero">
+  <div class="wrap ph-in">
+    <div class="crumb"><a href="index.html">Anasayfa</a><span>›</span><a href="hakkimizda.html">Kurumsal</a><span>›</span>Kurumsal Kimlik</div>
+    <h1>Kurumsal Kimlik</h1>
+    <p>Markamızı oluşturan logo, renk paleti, tipografi ve eğitim kataloglarımız.</p>
+  </div>
+</section>
+
+<section class="kimlik">
+  <div class="wrap">
+    <div class="block reveal">
+      <div class="sec-head left" style="max-width:none;margin-bottom:24px"><div class="k">Logo</div><h2 style="font-size:clamp(24px,3vw,32px)">Marka Logomuz</h2></div>
+      <div class="logo-show">
+        <div class="logo-box dark"><img src="logo.svg" alt="Digital Vizyon Akademi logo (koyu zemin)"></div>
+        <div class="logo-box" style="background:var(--soft)"><img src="logo.svg" alt="Digital Vizyon Akademi logo" style="filter:none"></div>
+      </div>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:14px">Logomuz koyu zeminlerde beyaz sürümüyle kullanılır. Açık zeminlerde marka amblemi ön plandadır.</p>
+    </div>
+
+    <div class="block reveal">
+      <div class="sec-head left" style="max-width:none;margin-bottom:24px"><div class="k">Renkler</div><h2 style="font-size:clamp(24px,3vw,32px)">Marka Renk Paleti</h2></div>
+      <div class="swatches">
+        <div class="sw"><div class="c" style="background:#673588"></div><div class="t"><b>Mor</b><span>#673588</span></div></div>
+        <div class="sw"><div class="c" style="background:#9b2f8f"></div><div class="t"><b>Macenta</b><span>#9b2f8f</span></div></div>
+        <div class="sw"><div class="c" style="background:#2d3785"></div><div class="t"><b>İndigo</b><span>#2d3785</span></div></div>
+        <div class="sw"><div class="c" style="background:#f6c915"></div><div class="t"><b>Altın</b><span>#f6c915</span></div></div>
+      </div>
+    </div>
+
+    <div class="block reveal">
+      <div class="sec-head left" style="max-width:none;margin-bottom:24px"><div class="k">Tipografi</div><h2 style="font-size:clamp(24px,3vw,32px)">Yazı Tiplerimiz</h2></div>
+      <div class="type-grid">
+        <div class="type-card"><div class="big" style="font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase">Oswald</div><p style="color:#6f6a78;font-size:14px">Başlıklarda kullanılan güçlü, sıkışık (condensed) başlık fontu.</p></div>
+        <div class="type-card"><div class="big" style="font-family:'Poppins',sans-serif;font-weight:600">Poppins</div><p style="color:#6f6a78;font-size:14px">Gövde metni ve arayüzde kullanılan modern, okunaklı sans-serif font.</p></div>
+      </div>
+    </div>
+
+    <div class="block reveal">
+      <div class="sec-head left" style="max-width:none;margin-bottom:24px"><div class="k">Kataloglar</div><h2 style="font-size:clamp(24px,3vw,32px)">Eğitim Kataloglarımız</h2></div>
+      <div class="cat-dl">
+        <a class="dl-card" href="https://digitalvizyon.net/katalog/Digital-Vizyon-It-Katalog.pdf" target="_blank" rel="noopener">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg></div>
+          <div><h3>IT Eğitimleri Kataloğu</h3><p>Bilgi teknolojileri eğitim programlarımız (PDF)</p></div>
+        </a>
+        <a class="dl-card" href="https://digitalvizyon.net/wp-content/uploads/2023/09/digital-vizyon-kurumsal-gelisim-katalogu.pdf" target="_blank" rel="noopener">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg></div>
+          <div><h3>Kurumsal Gelişim Kataloğu</h3><p>Kurumsal gelişim eğitim programlarımız (PDF)</p></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-wrap" style="padding:0 0 100px"><div class="wrap"><div class="cta-band reveal"><div class="in">
+  <h2>Kurumunuza Özel Eğitim Planlayalım</h2>
+  <p>Kataloglarımızı inceleyin, ihtiyacınıza uygun programı birlikte belirleyelim.</p>
+  <div class="btns"><a href="iletisim.html" class="btn btn-gold">Teklif Alın</a><a href="egitimler.html" class="btn btn-ghost">Eğitimleri İncele</a></div>
+</div></div></div></div>
+
+<footer id="siteFooter"></footer>
+<button class="totop" id="totop" aria-label="Yukarı"><svg viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg></button>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

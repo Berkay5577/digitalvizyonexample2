@@ -1,0 +1,12 @@
+# Reference material (not part of the website)
+siteorn.mp4
+
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+
+# Dependencies / build (if added later)
+node_modules/
+dist/
