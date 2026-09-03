@@ -517,3 +517,42 @@ footer .desc{font-size:14px;line-height:1.7;opacity:.85;max-width:300px;margin-b
   .quickbar a .lbl{display:none}
 }
 @media(max-width:520px){.quickbar a{width:38px;height:38px}.quickbar a svg{width:18px;height:18px}}
+
+/* ===== training detail (tabbed + registration card) ===== */
+.edetail{padding:0 0 40px}
+.edetail-grid{display:grid;grid-template-columns:1fr 380px;gap:34px;align-items:start;position:relative;z-index:5}
+.tabcard{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 30px 70px rgba(74,36,100,.12);overflow:hidden}
+.tabbar{display:flex;gap:2px;border-bottom:1px solid var(--line);padding:6px 10px 0;overflow-x:auto}
+.tabbar::-webkit-scrollbar{height:0}
+.tabbar button{flex:none;background:none;border:none;font-family:inherit;font-size:14.5px;font-weight:600;color:var(--muted);padding:16px 18px;cursor:none;position:relative;white-space:nowrap;transition:color .2s}
+.tabbar button:hover{color:var(--ink)}
+.tabbar button.active{color:var(--purple)}
+.tabbar button.active::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:var(--purple)}
+.tabpanes{padding:38px 42px 44px}
+.tabpane{display:none}
+.tabpane.active{display:block;animation:fadeUp .4s ease}
+.tabpane h2{font-size:23px;font-weight:700;margin-bottom:18px}
+.tabpane h3{font-size:17px;font-weight:600;margin:30px 0 14px}
+.tabpane>p{color:#5f5a68;font-size:15.5px;line-height:1.85;margin-bottom:14px}
+.tabpane>p strong{color:var(--ink);font-weight:600}
+.approach{list-style:none;display:grid;gap:14px;margin:6px 0}
+.approach li{display:flex;gap:12px;font-size:15px;color:#5f5a68;line-height:1.55}
+.approach li .dot{color:var(--purple);font-weight:800;font-size:18px;line-height:1.3}
+.approach li b{color:var(--ink);font-weight:600}
+.reg-col{position:sticky;top:100px}
+.reg-media{height:170px;border-radius:18px;background-size:cover;background-position:center;margin-bottom:18px;box-shadow:0 20px 44px rgba(74,36,100,.18)}
+.regcard{border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 24px 60px rgba(74,36,100,.1);padding:26px 28px 30px}
+.regcard h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.regcard .rrow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.regcard .rrow:last-of-type{border-bottom:none}
+.regcard .rrow .lab{color:var(--muted)}
+.regcard .rrow .val{font-weight:700;text-align:right}
+.regcard .rrow .val .ok{color:#1e9e54}
+.regcard .rbtn{width:100%;justify-content:center;margin-top:20px;padding:15px}
+.rc-contact{text-align:center;margin-top:20px;font-size:14px;color:var(--muted);line-height:1.8}
+.rc-contact a{color:var(--purple);font-weight:600}
+@media(max-width:1100px){
+  .edetail-grid{grid-template-columns:1fr;margin-top:-70px!important}
+  .reg-col{position:static;order:-1;max-width:560px}
+}
+@media(max-width:680px){.tabpanes{padding:26px 22px 30px}.tabbar button{padding:14px 14px;font-size:14px}}

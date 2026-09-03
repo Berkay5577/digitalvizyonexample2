@@ -243,40 +243,55 @@
     }else{
       document.title=t.title+' | Digital Vizyon Akademi';
       const related=window.TRAININGS.filter(x=>x.category===t.category&&x.id!==t.id).slice(0,3);
+      const chk='<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
+      const lvl=(t.level||'').toLowerCase();
+      const prereq = lvl.includes('ileri')
+        ? ['İlgili alanda temel/orta düzey bilgi ve deneyim önerilir.','Konunun temel kavramlarına aşinalık beklenir.','Uygulamalı bölümler için bir dizüstü bilgisayar önerilir.']
+        : (lvl.includes('başlangıç') && !lvl.includes('orta'))
+        ? ['Bu eğitim için özel bir ön koşul bulunmamaktadır.','Temel bilgisayar okuryazarlığı yeterlidir.','Konu sıfırdan, temel kavramlarla ele alınır.']
+        : ['Temel bilgisayar kullanımı ve alana ilgi yeterlidir.','Önceden ileri düzey deneyim gerekmez.','Uygulamalı bölümler için bir dizüstü bilgisayar önerilir.'];
+      const approach=[
+        ['Uygulamalı Öğrenme','Konular hands-on örnekler ve alıştırmalarla pekiştirilir'],
+        ['Güncel İçerik','Sektördeki son gelişmelere göre sürekli güncellenir'],
+        ['Uzman Eğitmen','Alanında deneyimli, sertifikalı eğitmen kadrosu'],
+        ['Eğitim Sonrası Destek','Sorularınız için iletişim ve mentor desteği']
+      ];
+      const olist=arr=>`<ul class="olist">${arr.map(o=>`<li>${chk}${esc(o)}</li>`).join('')}</ul>`;
+      const tabs=[
+        {k:'hakkinda',label:'Hakkında',html:`<h2>Eğitim Hakkında</h2>${t.description.map(p=>`<p>${esc(p)}</p>`).join('')}<h3>Eğitim Yaklaşımı</h3><ul class="approach">${approach.map(a=>`<li><span class="dot">•</span><span><b>${a[0]}</b> — ${a[1]}</span></li>`).join('')}</ul>`},
+        {k:'onkosul',label:'Ön Koşul',html:`<h2>Ön Koşullar</h2>${olist(prereq)}`},
+        {k:'icerik',label:'İçerik',html:`<h2>Eğitim İçeriği</h2><div class="outline">${t.outline.map(m=>`<div class="mod"><div class="num"></div><div><h4>${esc(m.t)}</h4><p>${esc(m.d)}</p></div></div>`).join('')}</div>`},
+        {k:'kazanim',label:'Kazanımlar',html:`<h2>Eğitim Kazanımları</h2>${olist(t.outcomes)}`},
+        {k:'hedef',label:'Hedef Kitle',html:`<h2>Kimler İçin Uygundur?</h2>${olist(t.audience)}`},
+        {k:'sertifika',label:'Sertifika',html:`<h2>Sertifikalandırma</h2><p>Bu eğitim <strong>${esc(t.certificate)}</strong> ile tamamlanır.</p><p>Eğitim başında “Ön Test”, bitiminde “Son Test” uygulanarak gelişim ölçümlenir. Online eğitimlerde değerlendirme formunu dolduran katılımcılar sertifikalarını portal üzerinden; yüz yüze eğitimlerde ise operasyon ekibimiz aracılığıyla alır.</p>`}
+      ];
       droot.innerHTML=`
-      <section class="page-hero">
+      <section class="page-hero" style="padding-bottom:150px">
         <div class="wrap ph-in">
-          <div class="crumb"><a href="index.html">Anasayfa</a><span>›</span><a href="egitimler.html">Eğitimler</a><span>›</span>${esc(t.title)}</div>
-          <h1>${esc(t.title)}</h1>
+          <div class="crumb"><a href="index.html">Anasayfa</a><span>›</span><a href="egitimler.html">Eğitimler</a><span>›</span>${esc(t.categoryLabel)}</div>
+          <h1 style="max-width:900px;margin-left:auto;margin-right:auto">${esc(t.title)}</h1>
           <p>${esc(t.summary)}</p>
         </div>
       </section>
-      <section class="detail"><div class="wrap detail-layout">
-        <div class="detail-main">
-          <img class="dhero" src="${t.image.replace(/\/\d+\/\d+/,'/1200/600')}" alt="${esc(t.title)}">
-          <p class="lead">${esc(t.description[0])}</p>
-          ${t.description.slice(1).map(p=>`<p>${esc(p)}</p>`).join('')}
-          <h2>Eğitim Kazanımları</h2>
-          <ul class="olist">${t.outcomes.map(o=>`<li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${esc(o)}</li>`).join('')}</ul>
-          <h2>Kimler Katılmalı?</h2>
-          <ul class="olist">${t.audience.map(o=>`<li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${esc(o)}</li>`).join('')}</ul>
-          <h2>Eğitim İçeriği</h2>
-          <div class="outline">${t.outline.map(m=>`<div class="mod"><div class="num"></div><div><h4>${esc(m.t)}</h4><p>${esc(m.d)}</p></div></div>`).join('')}</div>
-          <div class="tag-row">${(t.tags||[]).map(x=>`<span>${esc(x)}</span>`).join('')}</div>
+      <section class="edetail"><div class="wrap edetail-grid" style="margin-top:-100px">
+        <div class="tabcard">
+          <div class="tabbar">${tabs.map((tb,i)=>`<button data-k="${tb.k}"${i===0?' class="active"':''}>${tb.label}</button>`).join('')}</div>
+          <div class="tabpanes">${tabs.map((tb,i)=>`<div class="tabpane${i===0?' active':''}" data-k="${tb.k}">${tb.html}</div>`).join('')}</div>
         </div>
-        <aside>
-          <div class="info-card">
-            <h3>Eğitim Bilgileri</h3>
-            <div class="price">Kurumsal / grup fiyatları için teklif alın</div>
-            <div class="row"><span class="lab"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Süre</span><span class="val">${esc(t.duration)}</span></div>
-            <div class="row"><span class="lab"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Seviye</span><span class="val">${esc(t.level)}</span></div>
-            <div class="row"><span class="lab"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Format</span><span class="val">${esc(t.format)}</span></div>
-            <div class="row"><span class="lab"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3z"/></svg>Sertifika</span><span class="val">${esc(t.certificate)}</span></div>
-            <div class="row"><span class="lab"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Kategori</span><span class="val">${esc(t.categoryLabel)}</span></div>
-            <a class="btn btn-gold" href="iletisim.html?egitim=${encodeURIComponent(t.title)}">Teklif / Bilgi Al</a>
-            <a class="btn btn-outline" href="egitimler.html">Tüm Eğitimler</a>
+        <div class="reg-col">
+          <div class="reg-media" style="background-image:url('${t.image.replace(/\/\d+\/\d+/,'/700/460')}')"></div>
+          <div class="regcard">
+            <h3>Kayıt Bilgileri</h3>
+            <div class="rrow"><span class="lab">Süre</span><span class="val">${esc(t.duration)}</span></div>
+            <div class="rrow"><span class="lab">Seviye</span><span class="val">${esc(t.level)}</span></div>
+            <div class="rrow"><span class="lab">Format</span><span class="val">${esc(t.format)}</span></div>
+            <div class="rrow"><span class="lab">Kontenjan</span><span class="val">${esc(t.kontenjan||'12 kişi')}</span></div>
+            <div class="rrow"><span class="lab">Sertifika</span><span class="val"><span class="ok">✓</span> Var</span></div>
+            <div class="rrow"><span class="lab">Mentor</span><span class="val">${esc(t.mentor||'30 gün destek')}</span></div>
+            <a class="btn btn-purple rbtn" href="iletisim.html?egitim=${encodeURIComponent(t.title)}">Hemen Kayıt Ol</a>
+            <div class="rc-contact">Bilgi için: <a href="tel:+903122174303">+90 312 217 43 03</a><br><a href="mailto:info@digitalvizyon.net">info@digitalvizyon.net</a></div>
           </div>
-        </aside>
+        </div>
       </div></section>
       ${related.length?`<section class="cats" style="padding:20px 0 100px"><div class="wrap">
         <div class="sec-head left"><div class="k">İlgili Eğitimler</div><h2>Benzer Programlar</h2></div>
@@ -286,6 +301,12 @@
             <div class="tbody"><div class="tcat">${esc(r.categoryLabel)}</div><h3>${esc(r.title)}</h3><p>${esc(r.summary)}</p><span class="go">Detayları Gör →</span></div>
           </a>`).join('')}</div>
       </div></section>`:''}`;
+      const tbar=droot.querySelector('.tabbar');
+      tbar.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+        const k=b.dataset.k;
+        tbar.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));
+        droot.querySelectorAll('.tabpane').forEach(p=>p.classList.toggle('active',p.dataset.k===k));
+      }));
       bindGrow(droot);observeReveal(droot);decoPageHero(droot);
     }
   }
